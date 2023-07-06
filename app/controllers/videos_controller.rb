@@ -1,5 +1,7 @@
 class VideosController < ApplicationController
   before_action :set_video, only: %i[ show edit update destroy ]
+  before_action :delete_files, only: %i[ destroy ]
+  after_action :create_screenshots, only: %i[ create update ]
 
   # GET /videos
   def index
@@ -48,11 +50,19 @@ class VideosController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_video
-      @video = Video.find(params[:id])
+      @video = Video.includes(:images).find(params[:id])
     end
 
     # Only allow a list of trusted parameters through.
     def video_params
       params.require(:video).permit(:title, :path)
+    end
+
+    def create_screenshots
+      VideoProcessingJob.new(@video).perform
+    end
+
+    def delete_files
+      FileUtils.rm_rf("public/uploads/video/path/#{@video.id}")
     end
 end
