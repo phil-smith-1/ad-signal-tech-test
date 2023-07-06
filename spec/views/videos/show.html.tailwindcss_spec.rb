@@ -11,6 +11,6 @@ RSpec.describe "videos/show", type: :view do
   it "renders attributes in <p>" do
     render
     expect(rendered).to match(/Title/)
-    expect(rendered).to match(/Video/)
+    expect(rendered).to match(/Filename/)
   end
 end

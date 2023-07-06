@@ -4,14 +4,19 @@
     <%= video.title %>
   </p>
 
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Video:</strong>
-    <%= video_tag video.path, :controls => true %>
-  </p>
-
   <% if action_name != "show" %>
+    <p class="my-5">
+      <strong class="block font-medium mb-1">Filename:</strong>
+      <%= video.path.identifier %>
+    </p>
+
     <%= link_to "Show this video", video, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
     <%= link_to 'Edit this video', edit_video_path(video), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
     <hr class="mt-6">
+  <% else %>
+    <p class="my-5">
+      <strong class="block font-medium mb-1">Video:</strong>
+      <%= video_tag video.path, :controls => true %>
+    </p>
   <% end %>
 </div>
