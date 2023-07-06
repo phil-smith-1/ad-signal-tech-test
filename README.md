@@ -35,3 +35,52 @@ As an engineering team, we want to ensure that our codebases have good test cove
 We use RSpec but if you prefer to use minitest or any other framework feel free to make that switch and let us know why you prefer.
 
 Feel free to add any other supporting gems which will support you further in testing if needed.
+
+# Solution README
+
+## Tech
+- Ruby 3.2.2
+- Rails 7.0.6
+- Tailwind
+- RSpec
+- Factorybot
+- Rubocop
+
+## Setup
+First clone the repository. Once cloned, run `bundle` to install the Gems. Next set up the database:
+
+`rails db:create db:schema:load`
+
+This will set up the development and test databases.
+
+## Usage
+In the console run `rails s` to boot your local server. You can then visit `localhost:3000` to use the system. From here you may view a list of videos. Click on a the "Show this video" button to see more information.
+
+## Testing
+The application was developed with Test Driven Development. To run the test suite (unit tests), use `rspec` in the console. The test files are located in the `spec` directory.
+
+## Coding Techniques
+The following coding techniques/patterns have been used in the development of this challenge:
+- Test Driven Development
+- Processing optimisation
+- N+1 management
+- Jobs
+- Factory pattern
+- SOLID design principles
+
+## Choices and Assumptions
+I made several choices and assumptions during the development process, many of which have been made due to time constraints. These include:
+- There is no user system, therefore:
+  - Videos are not owned by a user
+  - Any public user can make changes to any video
+  - Any public user can add videos
+- There are no constraints on video type, however:
+  - Only MP4 file extension is supported
+  - Only video file type can be uploaded
+- There are no constraints on video length or filesize (This could cause performance issues with larger or longer videos)
+
+## Future Improvements
+1. More testing
+2. Large video files could lead to performance issues. In this case, run the video processing job asynchronously to protect the system.
+3. Update to a more sophisticated UI/Design
+4. More exception/error handling.
