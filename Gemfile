@@ -52,6 +52,7 @@ group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
   gem 'rspec-rails', '~> 6.0', '>= 6.0.3'
+  gem 'factory_bot_rails', '~> 6.2'
 end
 
 group :development do
@@ -68,3 +69,12 @@ group :development do
   # gem "spring"
 end
 
+group :test do
+  # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
+  gem "capybara"
+  gem 'rails-controller-testing', '~> 1.0', '>= 1.0.5'
+  gem "selenium-webdriver"
+  gem 'shoulda', '~> 4.0'
+  gem "webdrivers"
+  gem 'webmock', '~> 3.18', '>= 3.18.1'
+end
