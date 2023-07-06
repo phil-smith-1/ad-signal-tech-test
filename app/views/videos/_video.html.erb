@@ -5,8 +5,8 @@
   </p>
 
   <p class="my-5">
-    <strong class="block font-medium mb-1">Path:</strong>
-    <%= video.path %>
+    <strong class="block font-medium mb-1">Video:</strong>
+    <%= video_tag video.path, :controls => true %>
   </p>
 
   <% if action_name != "show" %>
