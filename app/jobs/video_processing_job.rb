@@ -13,7 +13,7 @@ class VideoProcessingJob
 
   def perform
     parsed_duration = ffmpeg_video.duration.floor
-    ffmpeg_video.screenshot("#{screenshot_directory}/screenshot_%d.jpg", { vframes: parsed_duration, frame_rate: '1'}, validate: false)
+    ffmpeg_video.screenshot("#{screenshot_directory}/screenshot_%d.jpg", { vframes: parsed_duration, frame_rate: '1' }, validate: false)
     save_screenshots(duration: parsed_duration)
   end
 
