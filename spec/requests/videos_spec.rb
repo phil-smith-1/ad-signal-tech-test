@@ -13,17 +13,30 @@ require 'rails_helper'
 # sticking to rails and rspec-rails APIs to keep things simple and stable.
 
 RSpec.describe "/videos", type: :request do
-  
+
   # This should return the minimal set of attributes required to create a valid
   # Video. As you add validations to Video, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) {
-    skip("Add a hash of attributes valid for your model")
+    {
+      title: 'Test title',
+      path: 'test/path'
+    }
   }
 
   let(:invalid_attributes) {
-    skip("Add a hash of attributes invalid for your model")
+    {
+      title: nil,
+      path: nil
+    }
   }
+
+  let(:video_processing_job_double) { instance_double(VideoProcessingJob) }
+
+  before do
+    allow(VideoProcessingJob).to receive(:new).and_return(video_processing_job_double)
+    allow(video_processing_job_double).to receive(:perform).and_return(true)
+  end
 
   describe "GET /index" do
     it "renders a successful response" do
@@ -77,12 +90,12 @@ RSpec.describe "/videos", type: :request do
         }.to change(Video, :count).by(0)
       end
 
-    
+
       it "renders a response with 422 status (i.e. to display the 'new' template)" do
         post videos_url, params: { video: invalid_attributes }
         expect(response).to have_http_status(:unprocessable_entity)
       end
-    
+
     end
   end
 
