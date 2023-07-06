@@ -18,5 +18,12 @@
       <strong class="block font-medium mb-1">Video:</strong>
       <%= video_tag video.path, :controls => true %>
     </p>
+
+    <p class="my-5">
+      <strong class="block font-medium mb-1">Screenshots:</strong>
+      <% video.images.each do |image| %>
+        <%= image_tag image.path.gsub(/^public/, '') %><br />
+      <% end %>
+    </p>
   <% end %>
 </div>
