@@ -42,6 +42,8 @@ Feel free to add any other supporting gems which will support you further in tes
 - Ruby 3.2.2
 - Rails 7.0.6
 - Tailwind
+- Carrierwave
+- FFMPEG, streamio-ffmpeg
 - RSpec
 - Factorybot
 - Rubocop
@@ -52,6 +54,10 @@ First clone the repository. Once cloned, run `bundle` to install the Gems. Next 
 `rails db:create db:schema:load`
 
 This will set up the development and test databases.
+
+Install FFMPEG. On MacOS, using Homebrew:
+
+`brew install ffmpeg`
 
 ## Usage
 In the console run `rails s` to boot your local server. You can then visit `localhost:3000` to use the system. From here you may view a list of videos. Click on a the "Show this video" button to see more information.
