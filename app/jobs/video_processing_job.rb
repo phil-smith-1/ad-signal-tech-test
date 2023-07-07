@@ -3,15 +3,13 @@
 require 'streamio-ffmpeg'
 
 class VideoProcessingJob
+  include Sidekiq::Job
   attr_reader :video, :ffmpeg_video, :screenshot_directory
 
-  def initialize(video)
-    @video = video
+  def perform(video_id)
+    @video = Video.find(video_id)
     @ffmpeg_video = FFMPEG::Movie.new(video.path.path)
     @screenshot_directory = "public/uploads/video/path/#{video.id}"
-  end
-
-  def perform
     parsed_duration = ffmpeg_video.duration.floor
     ffmpeg_video.screenshot("#{screenshot_directory}/screenshot_%d.jpg", { vframes: parsed_duration, frame_rate: '1' }, validate: false)
     save_screenshots(duration: parsed_duration)

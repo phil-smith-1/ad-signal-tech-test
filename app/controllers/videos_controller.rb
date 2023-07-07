@@ -59,7 +59,7 @@ class VideosController < ApplicationController
     end
 
     def create_screenshots
-      VideoProcessingJob.new(@video).perform
+      VideoProcessingJob.perform_async(@video.id)
     end
 
     def delete_files
