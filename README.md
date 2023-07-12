@@ -61,7 +61,13 @@ Install FFMPEG. On MacOS, using Homebrew:
 `brew install ffmpeg`
 
 ## Usage
-In the console run `rails s` to boot your local server. You can then visit `localhost:3000` to use the system. From here you may view a list of videos. Click on a the "Show this video" button to see more information.
+Redis and Sidekiq must be running as background jobs. in sepoarate console sessions:
+
+`redis-server`
+
+`sidekiq`
+
+In another console session run `rails s` to boot your local server. You can then visit `localhost:3000` to use the system. From here you may view a list of videos. Click on a the "Show this video" button to see more information.
 
 ## Testing
 The application was developed with Test Driven Development. To run the test suite (unit tests), use `rspec` in the console. The test files are located in the `spec` directory.
@@ -87,7 +93,7 @@ I made several choices and assumptions during the development process, many of w
 - There are no constraints on video length or filesize (This could cause performance issues with larger or longer videos)
 
 ## Future Improvements
-1. More testing
+1. More testing (particularly feature tests)
 2. ~~Large video files could lead to performance issues. In this case, run the video processing job asynchronously to protect the system.~~ &#9745;
 3. Update to a more sophisticated UI/Design
 4. More exception/error handling.
