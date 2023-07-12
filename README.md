@@ -44,6 +44,7 @@ Feel free to add any other supporting gems which will support you further in tes
 - Tailwind
 - Carrierwave
 - FFMPEG, streamio-ffmpeg
+- Sidekiq
 - RSpec
 - Factorybot
 - Rubocop
@@ -70,7 +71,7 @@ The following coding techniques/patterns have been used in the development of th
 - Test Driven Development
 - Processing optimisation
 - N+1 management
-- Jobs
+- Asynchronous jobs
 - Factory pattern
 - SOLID design principles
 
@@ -87,6 +88,6 @@ I made several choices and assumptions during the development process, many of w
 
 ## Future Improvements
 1. More testing
-2. Large video files could lead to performance issues. In this case, run the video processing job asynchronously to protect the system.
+2. ~~Large video files could lead to performance issues. In this case, run the video processing job asynchronously to protect the system.~~ &#9745;
 3. Update to a more sophisticated UI/Design
 4. More exception/error handling.
